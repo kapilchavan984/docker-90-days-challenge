@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rust-pod
+  labels:
+    app: rust
+spec:
+  containers:
+  - name: rust
+    image: rust:1.77-alpine
+    command: ["sh", "-c"]
+    args:
+      - |
+        cat <<EOF > main.rs
+        use std::net::TcpListener;
+        use std::io::Write;
+
+        fn main() {
+            let listener = TcpListener::bind("0.0.0.0:8080").unwrap();
+            println!("Rust server running on port 8080");
+
+            for stream in listener.incoming() {
+                let mut stream = stream.unwrap();
+                let response = "HTTP/1.1 200 OK\r\nContent-Length: 21\r\n\r\nHello from Rust Pod";
+                stream.write_all(response.as_bytes()).unwrap();
+            }
+        }
+        EOF
+        rustc main.rs && ./main
+    ports:
+    - containerPort: 8083

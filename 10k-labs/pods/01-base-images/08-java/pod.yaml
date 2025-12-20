@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java-pod
+  labels:
+    app: java
+spec:
+  containers:
+  - name: java
+    image: eclipse-temurin:21-jdk
+    command: ["sh", "-c"]
+    args:
+      - |
+        cat <<EOF > Hello.java
+        public class Hello {
+            public static void main(String[] args) throws Exception {
+                System.out.println("Hello from Java Pod");
+                Thread.sleep(Long.MAX_VALUE);
+            }
+        }
+        EOF
+        javac Hello.java && java Hello
