@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: php-pod
+  labels:
+    app: php
+spec:
+  containers:
+  - name: php
+    image: php:8.3-cli
+    command: ["sh", "-c"]
+    args:
+      - |
+        echo "<?php echo 'Hello from PHP Pod'; ?>" > index.php && \
+        php -S 0.0.0.0:8080
+    ports:
+    - containerPort: 8080
