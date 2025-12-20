@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-pod
+  labels:
+    app: go
+spec:
+  containers:
+  - name: go
+    image: golang:1.22-alpine
+    command: ["sh", "-c"]
+    args:
+      - |
+        cat <<EOF > main.go
+        package main
+
+        import (
+          "fmt"
+          "net/http"
+        )
+
+        func handler(w http.ResponseWriter, r *http.Request) {
+          fmt.Fprintln(w, "Hello from Go Pod")
+        }
+
+        func main() {
+          http.HandleFunc("/", handler)
+          http.ListenAndServe(":8080", nil)
+        }
+        EOF
+        go run main.go
+    ports:
+    - containerPort: 8080
