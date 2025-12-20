@@ -1,0 +1,30 @@
+# Kubernetes Master Portfolio 🚀
+
+## About Me
+DevOps / Platform / SRE Engineer with hands-on Kubernetes expertise
+across 10,000+ real-world scenarios (foundation → expert).
+
+## Skills
+- Kubernetes (Core → Advanced → Multi-cluster)
+- Docker, Helm, Kustomize
+- GitOps (ArgoCD, Flux)
+- Observability (Prometheus, Grafana, Loki)
+- Security (RBAC, Pod Security, CKS patterns)
+- Cloud (EKS, GKE, AKS)
+- Terraform, CI/CD
+
+## Repository Map
+| Area | Repo |
+|----|----|
+| Kubernetes Foundation | k8s-foundation-labs |
+| Networking | k8s-networking-labs |
+| Security | k8s-security-labs |
+| Observability | k8s-observability-labs |
+| GitOps | k8s-gitops-labs |
+| Stateful Apps | k8s-stateful-labs |
+| Advanced | k8s-advanced-architecture |
+
+## Certifications
+- CKA (in progress )
+- CKAD
+- CKS
